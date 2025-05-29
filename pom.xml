@@ -31,20 +31,15 @@
 
     <properties>
         <java.version>1.8</java.version>
-
         <spring.version>5.0.8.RELEASE</spring.version>
-        <mysql.driver.version>8.0.17</mysql.driver.version>
-
+        <mysql.driver.version>8.0.28</mysql.driver.version>
         <db.driver>com.mysql.jdbc.Driver</db.driver>
-        <db.url>jdbc:mysql://localhost:3306/eas-db?serverTimezone=UTC</db.url>
-        <db.username>sa</db.username>
-        <db.password>123456</db.password>
-
+        <db.url>jdbc:mysql://localhost:3306/eas-db?serverTimezone=GMT%2B8</db.url>
+        <db.username>root</db.username>
+        <db.password>root123</db.password>
         <guava.version>28.1-jre</guava.version>
         <slf4j.version>1.7.5</slf4j.version>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
@@ -52,16 +47,14 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven.failsafe.version>2.22.2</maven.failsafe.version>
-
         <flyway.version>6.0.4</flyway.version>
-
         <spring.version>5.2.2.RELEASE</spring.version>
         <mybatis.version>3.5.3</mybatis.version>
         <mybatis.spring.version>2.0.3</mybatis.spring.version>
-
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
         <assertj-core.version>3.6.2</assertj-core.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencies>
@@ -93,7 +86,6 @@
             <artifactId>druid</artifactId>
             <version>1.1.20</version>
         </dependency>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -126,6 +118,12 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!-- Lombok Dependency -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
     <build>

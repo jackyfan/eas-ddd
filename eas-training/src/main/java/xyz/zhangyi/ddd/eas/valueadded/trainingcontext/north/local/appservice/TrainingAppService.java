@@ -8,10 +8,14 @@ import xyz.zhangyi.ddd.core.exception.ApplicationInfrastructureException;
 import xyz.zhangyi.ddd.core.exception.ApplicationValidationException;
 import xyz.zhangyi.ddd.core.exception.DomainException;
 import xyz.zhangyi.ddd.core.stereotype.Local;
+import xyz.zhangyi.ddd.eas.valueadded.trainingcontext.domain.course.CourseId;
+import xyz.zhangyi.ddd.eas.valueadded.trainingcontext.north.message.AddTrainingRequest;
 import xyz.zhangyi.ddd.eas.valueadded.trainingcontext.north.message.TrainingResponse;
 import xyz.zhangyi.ddd.eas.valueadded.trainingcontext.domain.training.Training;
 import xyz.zhangyi.ddd.eas.valueadded.trainingcontext.domain.training.TrainingId;
 import xyz.zhangyi.ddd.eas.valueadded.trainingcontext.domain.training.TrainingService;
+
+import java.util.Objects;
 
 @Service
 @Local
@@ -32,5 +36,16 @@ public class TrainingAppService {
         } catch (Exception ex) {
             throw new ApplicationInfrastructureException(ex.getMessage(), ex);
         }
+    }
+
+    public void addTraining(AddTrainingRequest addTrainingRequest) {
+        if (Objects.isNull(addTrainingRequest)) {
+            throw new ApplicationValidationException("training request can not be null");
+        }
+            trainingService.addTraining(addTrainingRequest.getTitle(), addTrainingRequest.getDescription(),
+                    addTrainingRequest.getBeginTime(),
+                    addTrainingRequest.getEndTime(),
+                    addTrainingRequest.getPlace(), CourseId.from(addTrainingRequest.getCourseId()));
+
     }
 }
